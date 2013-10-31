@@ -14,15 +14,15 @@ Create a composer.json file in your project root:
 
     {
         "require": {
-            "pokelabo/filter": "*"
+            "pokelabo/filter": "1.0.*"
         },
         "repositories": [
             {
                 "type": "git",
-                "url": "https://github.com/pokelabo/phpkg-filter.git"
+                "url": "https://github.com/pokelabo/phpkg-filter.git",
+                "url": "https://github.com/pokelabo/phpkg-core-utility.git"
             }
-        ],
-        "minimum-stability": "dev"
+        ]
     }
 
 Usage
