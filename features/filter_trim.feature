@@ -1,7 +1,7 @@
 Feature: TrimFilter
 
   Scenario Outline: TrimFilter
-    When 値"<value>"を"trim"に"<option_map>"を設定してフィルタする
+    When "trim"フィルタに"<option_map>"を設定して値"<value>"をフィルタする
     Then フィルタの結果は"<result>"である
 
     Examples:

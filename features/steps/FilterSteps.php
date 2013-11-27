@@ -2,32 +2,20 @@
 
 use pokelabo\filter\Filter;
 
-$steps->When('/^値"([^"]*)"を"([^"]*)"に"([^"]*)"を設定してフィルタする$/', function($world, $arg1, $arg2, $arg3) {
-    $arg1 = trim($arg1, "'");
-    $arg1 = str_replace('\n', "\n", $arg1);
-    if ($arg1 === 'null') $arg1 = null;
+$steps->When('/^"([^"]*)"フィルタに"([^"]*)"を設定して値"([^"]*)"をフィルタする$/', function($world, $arg1, $arg2, $arg3) {
+    $arg3 = trim($arg3, "'");
+    $arg3 = str_replace('\n', "\n", $arg3);
+    if ($arg3 === 'null') $arg3 = null;
 
-    $option_map = $arg3 ? yaml_parse($arg3) : array();
-    $rule = array('value', $arg2) + $option_map;
+    $option_map = $arg2 ? yaml_parse($arg2) : array();
+    $rule = array('value', $arg1) + $option_map;
     $rule_list[] = $rule;
 
     $filter = new Filter($rule_list);
 
-    $output = $filter(array('value' => $arg1));
+    $output = $filter(array('value' => $arg3));
     $world->output = $output['value'];
 });
-
-// $steps->When('/^値"([^"]*)"を"([^"]*)"でフィルタする$/', function($world, $arg1, $arg2) {
-//     $arg1 = trim($arg1, "'");
-//     $arg1 = str_replace('\n', "\n", $arg1);
-//     if ($arg1 === 'null') $arg1 = null;
-// 
-//     $rule_list[] = array('value', $arg2);
-// 
-//     $filter = new Filter($rule_list);
-//     $output = $filter(array('value' => $arg1));
-//     $world->output = $output['value'];
-// });
 
 $steps->When('/^値"([^"]*)"を正規表現"([^"]*)"で"([^"]*)"に置き換えるよう"([^"]*)"でフィルタする$/', function($world, $arg1, $arg2, $arg3, $arg4) {
     $arg1 = trim($arg1, "'");
