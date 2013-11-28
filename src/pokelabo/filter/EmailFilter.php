@@ -1,6 +1,6 @@
 <?php // -*- coding: utf-8 -*-
 /**
- * Emailフィルタ
+ * Email Filter
  * @package pokelatta
  * @copyright Copyright (c) 2013, Pokelabo Inc.
  * @filesource
@@ -9,24 +9,34 @@
 namespace pokelabo\filter;
 
 /**
- * フィルタ：空白文字のトリミング
+ * Email Filter
  * @package pokelatta
  */
 class EmailFilter extends AbstractFilter {
     /**
-     * @var string 標準化を行う(+alias部分を取り除く)
+     * @var bool  to normalize email adress string.
      */
-    protected $_normalize = false;
+    protected $_normalize = true;
 
     /**
-     * フィルタ実行
-     * @param string $value パラメータのフィルタ対象キー
-     * @return mixed 変換結果
+     * @var bool  to strip alias part.
+     */
+    protected $_strip_alias = false;
+
+    /**
+     * Execute filter
+     * @param string $value  subject value
+     * @return mixed filtered string
      */
     public function filter($value) {
         if (is_null($value)) return $value;
 
         if ($this->_normalize) {
+            // Android terminal may send hyphen '-' as 'ー'
+            $value = str_replace('ー', '-', $value);
+        }
+
+        if ($this->_strip_alias) {
             $value = preg_replace('/\+.*?@/', '@', $value);
         }
         return $value;
