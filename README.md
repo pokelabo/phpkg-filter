@@ -60,8 +60,8 @@ Trimms string value.
 
 | options            | default | description                                                            |
 | :----------------- | :------ | :--------------------------------------------------                    |
-| left               | true    | If `true`, it trims left side of `input.                               |
-| right              | true    | If `true`, it trims right side of `input.                              |
+| left               | true    | If `true`, it trims left side of `input`.                              |
+| right              | true    | If `true`, it trims right side of `input`.                             |
 | unicode            | true    | If `true`, it also trims more spaces defined by UNICODE specification. |
 
 #### regexp_replace
