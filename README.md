@@ -35,7 +35,7 @@ Assume that you have values as below:
     $inputs = array('username' => '  nobody  '
                     'note'     => 'mailto: xyz@mysite.net');
 
-You can define filter rules against the values in form of array of array.  
+You can define filter rules against the values in form of array of array.
 
     $rules = array(
         array('username', 'trim'),
@@ -44,7 +44,7 @@ You can define filter rules against the values in form of array of array.
                       'replace' => 'xxxx@example.com'),
     );
 
-It has two rules, each rule forms array(`key of array`, `filter name` [, `options`...]).  
+It has two rules, each rule forms array(`key of array`, `filter name` [, `options`...]).
 
 Now it is ready to filter values:
 
@@ -81,6 +81,25 @@ Seaches specified `search` string in `input` and replace all with the string `re
 | :----------------- | :------ | :-------------------------------------------------- |
 | search             |         | _Required_. Search string.                          |
 | replace            |         | _Required_. A string replace to.                    |
+
+#### email
+
+| options            | default | description                                         |
+| :----------------- | :------ | :-------------------------------------------------- |
+| normalize          | true    | If `true`, it tries to normalize email string.      |
+| strip_alias        | false   | If `true`, it strips "alias" part.                  |
+
+#### base64_encode
+
+| options            | default | description                                         |
+| :----------------- | :------ | :-------------------------------------------------- |
+| none               |         |                                                     |
+
+#### base64_decode
+
+| options            | default | description                                         |
+| :----------------- | :------ | :-------------------------------------------------- |
+| none               |         |                                                     |
 
 License
 -------
